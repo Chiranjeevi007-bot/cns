@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'api',
     'users',
     'files',
-    'messages',
+    'secure_messages',
 ]
 
 MIDDLEWARE = [
