@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import MessageService from '../services/message.service';
-import UserService from '../services/user.service';
 import { generateEncryptionKey } from '../utils/encryption';
 
 const MessageSend = () => {
