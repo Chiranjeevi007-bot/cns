@@ -147,6 +147,11 @@ const downloadEncryptedFile = async (fileId, encryptionKey) => {
 };
 
 // Helper functions
+// TODO: These functions implement basic file chunking. For production:
+// 1. Add progress callbacks for upload/download tracking
+// 2. Implement chunk retry logic for failed uploads
+// 3. Add parallel chunk uploads with concurrency control
+// 4. Implement proper error handling and cleanup on failure
 const splitFileIntoChunks = async (file, chunkSize = 1024 * 1024) => {
   return new Promise((resolve) => {
     const chunks = [];
@@ -178,6 +183,9 @@ const combineChunks = async (chunks, fileType) => {
   return blob;
 };
 
+// TODO: Implement actual hash calculation using Web Crypto API
+// This is critical for file integrity verification and audit trails
+// See encryption.js hashData() function for implementation details
 const calculateHash = async (data) => {
   // Placeholder for actual hash calculation
   // In a real implementation, use Web Crypto API for SHA-256 or similar
@@ -196,7 +204,10 @@ const FileService = {
   getSharedFileDetails,
   deleteFile,
   uploadEncryptedFile,
-  downloadEncryptedFile
+  downloadEncryptedFile,
+  // Export helper functions for use in components
+  splitFileIntoChunks,
+  calculateHash
 };
 
 export default FileService;
