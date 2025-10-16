@@ -236,16 +236,16 @@ The frontend will run on `http://localhost:3000` and proxy API requests to `http
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'secure_share',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.getenv('DB_NAME', 'secure_share'),
+        'USER': os.getenv('DB_USER', 'postgres'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'postgres'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
 ```
 
-Update these settings according to your PostgreSQL installation.
+**Important:** In production, use environment variables for database credentials. Never commit sensitive credentials to version control.
 
 ## API Documentation
 

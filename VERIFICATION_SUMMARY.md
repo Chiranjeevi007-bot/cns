@@ -33,13 +33,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'secure_share',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'USER': '${DB_USER}',          # Use environment variable
+        'PASSWORD': '${DB_PASSWORD}',  # Use environment variable
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
 ```
+
+**Note:** In production, use environment variables for all sensitive configuration.
 
 **REST Framework Configuration:**
 ```python
@@ -139,10 +141,12 @@ DELETE /api/files/<id>/             - Delete file
 
 **File Chunking Implementation:**
 - Files split into 1MB chunks on client side
-- Each chunk uploaded separately with SHA-256 hash
+- Each chunk uploaded separately with hash placeholder
 - Sequential upload with progress tracking
 - Chunks stored with `FileChunk` model
-- Helper functions: `splitFileIntoChunks()`, `calculateHash()`
+- Helper functions: `splitFileIntoChunks()`, `calculateHash()` (placeholder)
+
+**Note:** Hash calculation uses placeholder implementation. Production implementation requires Web Crypto API SHA-256.
 
 **Status:** ✅ **FULLY IMPLEMENTED** (chunking working, hash calculation is placeholder)
 
@@ -363,7 +367,7 @@ npm run build
 
 ## Missing Components
 
-**None.** All required components have been implemented.
+**None.** All required component structures have been implemented. Some functions (encryption, hashing) use placeholder implementations with detailed guides for production deployment.
 
 ## Next Steps for Production
 
